@@ -13,14 +13,14 @@ A comprehensive collection of my Python programming journey, moving from core fu
 
 ---
 
-##Future Roadmap
+##Future Roadmap and ongoing learning 
 
-### 🤖 Machine Learning & Data Science
+### Machine Learning & Data Science
 - **Data Analysis:** NumPy, Pandas, and Matplotlib.
 - **Scikit-Learn:** Supervised and Unsupervised Learning.
 - **Deep Learning:** Neural Networks with TensorFlow/PyTorch.
 
-### 🌐 Web Frameworks
+### Web Frameworks
 - **Backend:** Django and Flask development.
 - **APIs:** Fast-performing APIs using FastAPI.
 
