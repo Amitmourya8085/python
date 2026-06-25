@@ -4,7 +4,7 @@ A comprehensive collection of my Python programming journey, moving from core fu
 
 ---
 
-## Core Fundamentals
+## 🔺Core Fundamentals
 | Category | Files |
 | :--- | :--- |
 | **Data Structures** | `List.py`, `Dict.py`, `Tuple.py`, `String.py` |
