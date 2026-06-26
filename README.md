@@ -32,3 +32,5 @@ A comprehensive collection of my Python programming journey, moving from core fu
    ```bash
    git clone [https://github.com/Amitmourya8085/python.git](https://github.com/Amitmourya8085/python.git)
    
+## LinkedIn 
+https://www.linkedin.com/in/amit-mourya-611915418?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
