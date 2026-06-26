@@ -1,5 +1,6 @@
 def list_operations():
-    print("---- LIST OPERATIONS ----")
+    print("---- welcome in Amit repo ----")
+    print("following list operations...")
     
     lst = [10, 20, 30, 40, 50]
     print("Original:", lst)
