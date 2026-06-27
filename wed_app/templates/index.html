@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AmitMourya8085--chatbox</title>
+</head>
+<body style="font-family: Arial; max-width: 500px; margin: 40px auto;">
+
+    <h2>My Gemini AI App</h2>
+    <input type="text" id="userInput" placeholder="Ask something..." style="width: 80%; padding: 8px;">
+    <button onclick="sendToFlask()">Ask</button>
+
+    <h4>Response:</h4>
+    <p id="aiResponse" style="background: #f0f0f0; padding: 10px; border-radius: 5px;"></p>
+
+    <script>
+        async function sendToFlask() {
+            const prompt = document.getElementById('userInput').value;
+            const output = document.getElementById('aiResponse');
+            output.innerText = "Thinking...";
+
+            // Send the prompt to the Flask /ask route
+            const response = await fetch('/ask', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt: prompt })
+            });
+
+            const data = await response.json();
+            output.innerText = data.response; // Display the parsed answer
+        }
+    </script>
+
+</body>
+</html>
