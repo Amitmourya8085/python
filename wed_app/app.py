@@ -12,3 +12,28 @@ def home():
     return render_template('index.html')
 
 
+@app.route('/ask', methods=['POST'])
+def ask_gemini():
+    
+    user_prompt = request.json.get('prompt') #index se input le ke json mai se dena
+    
+   
+    payload = {
+        "contents": [{
+            "parts": [{"text": user_prompt}]
+        }]
+    }
+    headers = {"Content-Type": "application/json"}
+
+  
+    response = requests.post(GEMINI_URL, json=payload, headers=headers)
+    
+   
+    data = response.json()
+    answer = data['candidates'][0]['content']['parts'][0]['text']
+    
+    
+    return jsonify({"response": answer})
+
+if __name__ == '__main__':
+    app.run(debug=True)
