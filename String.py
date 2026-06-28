@@ -27,7 +27,7 @@ def string_operations():
     print("Split:", s.split())
 
     # Join
-    print("Join:", "-".join(["Hello", "World"]))
+    print("Join:", "-".join(["Amit", "Mourya"]))
 
     # Check
     print("Is alpha:", s.isalpha())
