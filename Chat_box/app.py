@@ -10,4 +10,18 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route('/Ask')
+def ask_AM8085():
+     user_prompt = request.json.get('prompt')
+     payload = {
+        "contents": [{
+            "parts": [{"text": user_prompt}]
+        }]
+     } 
+     
+     header = {"Contents-Type":"applicatin/type"}
+
+     
+
+
 
