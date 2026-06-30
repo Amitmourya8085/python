@@ -7,7 +7,7 @@ A comprehensive collection of my Python programming journey, moving from core fu
 ## 🔺Core Fundamentals
 | Category | Files |
 | :--- | :--- |
-| **Data Structures** | `List.py`, `Dict.py`, `Tuple.py`, `String.py` | `Set`
+| **Data Structures** | `List.py`, `Dict.py`, `Tuple.py`, `String.py` | `Set` |
 | **Logic & Functions** | `Def.py`, `lamda.py` |
 | **OOP Concepts** | `Class.py` |
 | **API INTEGRATION**|`Chat Box`|
