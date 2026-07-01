@@ -14,7 +14,7 @@ A comprehensive collection of my Python programming journey, moving from core fu
 
 ---
 
-##Future Roadmap and ongoing learning 
+##Future Roadmap and ongoing learning :
 
 ### Machine Learning & Data Science
 - **Data Analysis:** NumPy, Pandas, and Matplotlib.
