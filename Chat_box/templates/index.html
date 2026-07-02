@@ -4,55 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat_box(AmitMourya8085)</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            max-width: 550px; 
-            margin: 40px auto; 
-            padding: 10px;
-        }
-        /* The scrollable area holding the messages */
-        #chatbox { 
-            height: 350px; 
-            border: 1px solid #ccc; 
-            padding: 15px; 
-            overflow-y: auto; 
-            margin-bottom: 15px; 
-            border-radius: 8px; 
-            background: #fafafa; 
-        }
-        /* Style for container blocks */
-        .message-row {
-            display: flex;
-            margin: 8px 0;
-        }
-        .user-row { justify-content: flex-end; }
-        .bot-row { justify-content: flex-start; }
 
-        /* The actual chat bubbles */
-        .bubble {
-            max-width: 75%;
-            padding: 10px 14px;
-            border-radius: 15px;
-            font-size: 14px;
-            line-height: 1.4;
-            white-space: pre-wrap;
-        }
-        .user-bubble { 
-            background-color: #007bff; 
-            color: white; 
-            border-bottom-right-radius: 2px;
-        }
-        .bot-bubble { 
-            background-color: #e9ecef; 
-            color: #333; 
-            border-bottom-left-radius: 2px;
-        }
-        .input-area {
-            display: flex;
-            gap: 8px;
-        }
-    </style>
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
@@ -60,91 +14,20 @@
     
     <div id="chatbox">
         <div class="message-row bot-row">
-            <div class="bubble bot-bubble">Hello! I am ready. Ask me anything, and I will remember our chat!</div>
+            <div class="bubble bot-bubble">
+         Hello! I am ready. Ask me anything, 
+            </div>
         </div>
     </div>
 
     <div class="input-area">
-        <input type="text" id="userInput" placeholder="Ask something..." style="flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-        <button onclick="sendToFlask()" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Ask</button>
-        <button onclick="clearChat()"style="padding: 10px 20px; background-color:#007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Clear Chat</button>
+        <input type="text" id="userInput" placeholder="Ask something...">
+        <button onclick="sendToFlask()">Ask</button>
+        <button onclick="clearChat()">Clear Chat</button>
     </div>
 
-    <script>
-        // Allow pressing 'Enter' to send the message
-        document.getElementById('userInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') sendToFlask();
-        });
+    <!-- Link JS -->
+    <script src="/static/script.js"></script>
 
-        async function sendToFlask() {
-            const inputElement = document.getElementById('userInput');
-            const prompt = inputElement.value.trim();
-            const chatbox = document.getElementById('chatbox');
-
-            if (!prompt) return; // Don't send empty prompts
-
-            // 1. Append User message bubble immediately to the UI
-            chatbox.innerHTML += `
-                <div class="message-row user-row">
-                    <div class="bubble user-bubble">${prompt}</div>
-                </div>
-            `;
-            
-            // Clear input and auto-scroll to the bottom
-            inputElement.value = '';
-            chatbox.scrollTop = chatbox.scrollHeight;
-
-            // 2. Add a temporary "Thinking..." bubble for the AI
-            const thinkingId = "thinking-" + Date.now();
-            chatbox.innerHTML += `
-                <div class="message-row bot-row" id="${thinkingId}">
-                    <div class="bubble bot-bubble"><i>Thinking...</i></div>
-                </div>
-            `;
-            chatbox.scrollTop = chatbox.scrollHeight;
-
-            try {
-                // 3. Send the prompt to your updated Flask session memory route
-                const response = await fetch('/ask', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ prompt: prompt })
-                });
-
-                const data = await response.json();
-                
-                // Remove the "Thinking..." bubble
-                document.getElementById(thinkingId).remove();
-
-                // 4. Append the actual Gemini answer bubble to the UI
-                chatbox.innerHTML += `
-                    <div class="message-row bot-row">
-                        <div class="bubble bot-bubble">${data.response}</div>
-                    </div>
-                `;
-                  function clearChat() {
-                  fetch('/clear', { method: 'POST' })
-                   .then(() => {
-                 document.getElementById('chatbox').innerHTML = `
-                <div class="message-row bot-row">
-                <div class="bubble bot-bubble">Chat cleared. Start again!</div>
-                </div>
-              `;
-        });
-}
-            } catch (error) {
-                document.getElementById(thinkingId).remove();
-                chatbox.innerHTML += `
-                    <div class="message-row bot-row">
-                        <div class="bubble bot-bubble" style="color: red;">Error processing your request.</div>
-                    </div>
-                `;
-            }
-
-            // Scroll to bottom again to see the final answer
-            chatbox.scrollTop = chatbox.scrollHeight;
-        }
-    </script>
-    
 </body>
 </html>
