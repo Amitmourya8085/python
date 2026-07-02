@@ -59,5 +59,10 @@ def ask_AM8085():
 
     return jsonify({"response": answer})
 
+@app.route('/clear', methods=['POST'])
+def clear_chat():
+    session['history'] = []
+    return '', 200
+
 if __name__ == '__main__':
     app.run(debug=True)

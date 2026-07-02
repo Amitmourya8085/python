@@ -67,6 +67,7 @@
     <div class="input-area">
         <input type="text" id="userInput" placeholder="Ask something..." style="flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
         <button onclick="sendToFlask()" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Ask</button>
+        <button onclick="clearChat()"style="padding: 10px 20px; background-color:#007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Clear Chat</button>
     </div>
 
     <script>
@@ -121,6 +122,16 @@
                         <div class="bubble bot-bubble">${data.response}</div>
                     </div>
                 `;
+                  function clearChat() {
+                  fetch('/clear', { method: 'POST' })
+                   .then(() => {
+                 document.getElementById('chatbox').innerHTML = `
+                <div class="message-row bot-row">
+                <div class="bubble bot-bubble">Chat cleared. Start again!</div>
+                </div>
+              `;
+        });
+}
             } catch (error) {
                 document.getElementById(thinkingId).remove();
                 chatbox.innerHTML += `
