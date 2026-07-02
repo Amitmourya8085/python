@@ -34,7 +34,11 @@ def ask_AM8085():
      
 
     payload = {
-        "contents": chat_history
+        "contents": chat_history,
+        "generationConfig": {
+            "temperature": 0.2,       # Low temperature = focused and precise
+            "maxOutputTokens": 150    # Short response constraint
+        }
     } 
      
     header = {"Content-Type": "application/json"}
@@ -48,7 +52,7 @@ def ask_AM8085():
 
     except Exception as e:
         print("Error:", e)
-        answer = "⚠️ Something went wrong. Please try again."
+        answer = "Something went wrong. Please try again."
 
     chat_history.append({
         "role": "model",
