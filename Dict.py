@@ -10,7 +10,7 @@ def dict_operations():
 
     # Add/Update
     d["email"] = "amit@gmail.com"
-    d["age"] = 19
+    d["age"] = 18
     print("After update:", d)
 
     # Remove
