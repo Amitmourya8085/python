@@ -1,7 +1,7 @@
 import requests
 import tkinter as tk
 
-api_key = "dfba527088c26160a04332e6f7ab004f"
+api_key = "?"
 city = input("Enter city:")
 
 url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
