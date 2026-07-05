@@ -10,7 +10,7 @@ async function sendToFlask() {
 
     if (!prompt) return;
 
-    // Add user message
+    // Add users message
     chatbox.innerHTML += `
         <div class="message-row user-row">
             <div class="bubble user-bubble">${prompt}</div>
