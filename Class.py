@@ -3,7 +3,7 @@ def class_demo():
 
     class Animal:
         def speak(self):
-            print("Animal speaks")
+            print("Animal speak")
 
     class Dog(Animal):  # Inheritance
         def speak(self):
